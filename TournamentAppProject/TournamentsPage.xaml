@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="TournamentAppProject.TournamentsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TournamentAppProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      MaxHeight="400"
+                      VerticalAlignment="Stretch"
+                      Margin="10,10,10,10" >
+            <StackPanel>
+                <ProgressRing Name="MyProgressRing" IsActive="True" Height="45" Width="45"/>
+                <ListView Name="TournamentsListItems"
+                          SelectionChanged="TournamentsListItems_SelectionChanged"
+                          Margin="0,0,10,0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <RelativePanel HorizontalAlignment="Stretch">
+                            <TextBlock TextAlignment="Center"
+                                       Text="{Binding Name}"
+                                       RelativePanel.AlignLeftWithPanel="True"/>
+                            <Button Name="DeleteTournamentButton"
+                                    Content="Usuń"
+                                    HorizontalAlignment="Right"
+                                    RelativePanel.AlignRightWithPanel="True"
+                                    Click="DeleteTournamentButton_Click"/>
+                        </RelativePanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" 
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center">
+            <TextBox Name="TournamentNameTextBox"
+                     PlaceholderText="Wpisz nazwę turnieju..." />
+            <Button Name="AddTorunamentButton" 
+                Content="Dodaj nowy turniej"
+                Click="AddTorunamentButton_Click"
+                Margin="0,5,0,0"
+                HorizontalAlignment="Center"
+                IsEnabled="False"/>
+            <Button Name="RefreshTournamentsButton" 
+                    Content="Odśwież"
+                    Click="RefreshTournamentsButton_Click"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

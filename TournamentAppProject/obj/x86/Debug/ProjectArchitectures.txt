@@ -1,0 +1,1 @@
+C:\Users\szpun\documents\visual studio 2015\Projects\TournamentAppProject\TournamentAppProject\TournamentAppProject.csproj;x86

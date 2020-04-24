@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="TournamentAppProject.TeamsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TournamentAppProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      MaxHeight="400"
+                      VerticalAlignment="Stretch"
+                      Margin="10,10,10,10" >
+            <StackPanel>
+            <ProgressRing x:ConnectionId='4' Name="MyProgressRing" IsActive="True" Height="45" Width="45"/>
+            <ListView x:ConnectionId='5' Name="TeamsListItems"
+                      Margin="0,0,10,0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <RelativePanel HorizontalAlignment="Stretch">
+                            <TextBlock TextAlignment="Center"
+                                       Text="{Binding Name}"
+                                       RelativePanel.AlignLeftWithPanel="True"/>
+                            <Button x:ConnectionId='6' Name="DeleteTeamButton"
+                                    Content="Usuń"
+                                    HorizontalAlignment="Right"
+                                    RelativePanel.AlignRightWithPanel="True"
+                                                                  />
+                        </RelativePanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <StackPanel Grid.Row="1" 
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center">
+            <TextBox x:ConnectionId='1' Name="TeamNameTextBox"
+                     PlaceholderText="Wpisz nazwę zespołu..." />
+            <Button x:ConnectionId='2' Name="AddTeamButton" 
+                Content="Dodaj nową drużynę"
+                                           
+                Margin="0,5,0,0"
+                HorizontalAlignment="Center"
+                IsEnabled="False"/>
+            <Button x:ConnectionId='3' Name="RefreshTeamsButton" 
+                    Content="Odśwież"
+                                                    
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>
+
